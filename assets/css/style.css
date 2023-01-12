@@ -12,7 +12,7 @@ body {
    
    overflow: hidden;
 
-   background-image: url(../img/background-skull.jfif);
+   /* background-image: url(../img/background-skull.jfif); */
    background-repeat: no-repeat;
    background-size: cover;
    
@@ -29,7 +29,10 @@ button {
    --windows-theme-color-primary: #4646e4;
    --windows-theme-color-primary-hover: #3737b3;
    
-   --windows-theme-color-secondary: #2727c0; 
+   --windows-theme-color-secondary: #0000f0;
+
+   --floating-menu-color: #292a2d;
+   --floating-menu-color-hover: #414243;
 }
 
 .task-bar {
@@ -81,9 +84,9 @@ button {
 .task-bar .task-button.focus::after {
    content: '';
 
-   height: 2px;
+   height: 3px;
    width: 100%;
-   background-color: var(--windows-theme-color-primary-hover);
+   background-color: var(--windows-theme-color-secondary);
 
    position: absolute;
    left: 0;
@@ -294,9 +297,27 @@ button {
    font-size: 1rem;
 }
 
+/* ####################################################### */
+/* ##################  DESKTOP AREA ###################### */
+/* ####################################################### */
+
 .desktop-area {
    width: calc(100vw - 40px);
    height: calc(100vh - 55px); /* 20px of border + 35px of task bar */
+   overflow: hidden;
+}
+
+/* preventing browser not working cause display none */
+.desktop-area #background-input {
+   position: absolute;
+   top: -10000px; 
+}
+
+.desktop-area .background-image {
+   width: calc(100vw - 40px);
+   height: calc(100vh - 55px);
+
+   position: absolute;
 }
 
 .desktop-area {
@@ -333,6 +354,60 @@ button {
 .desktop-area .icon i {
    font-size: 2.5rem;
 }
+
+/* #################### FLOATING MENU  ############################### */
+
+.floating-menu {
+   background-color: var(--floating-menu-color);
+   border: 1px solid #eee;
+   color: #fff;
+
+   list-style: none;
+   min-width: 15vw;
+
+   position: absolute;
+   
+   transition: opacity .5s, visibility .5s;
+   visibility: hidden;
+   opacity: 0;
+}
+
+.floating-menu.open {
+   opacity: 1;
+   visibility: visible;
+}
+
+.floating-menu li {
+   padding: 7px 10px;
+   cursor: pointer;
+   transition: background-color .2s;
+}
+
+.floating-menu li label {
+   cursor: pointer;
+}
+
+.floating-menu li.no-icon {
+   padding-left: 35px;
+}
+
+.floating-menu li:hover {
+   background-color: var(--floating-menu-color-hover);
+}
+
+.floating-menu li:not(:last-child) {
+   border-bottom: 1px solid #fff;
+}
+
+.floating-menu li i {
+   margin-right: 5px;
+}
+
+.floating-menu li#btn-reset-background {
+   display: none;
+}
+
+/* #################### STEAM  ############################### */
 
 .steam-wrapper {
    min-height: 450px;

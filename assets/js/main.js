@@ -31,24 +31,26 @@ date.innerHTML = today
 const btnOpenSteam  = document.querySelector('#btn-steam-taskbar')
 const steamWrapper  = document.querySelector('.steam-wrapper')
 const btnCloseSteam = document.querySelector('.close-steam')
+const btnOpenSteamFloatingMenu = document.querySelector('#btn-steam-floating-menu')
 
 btnOpenSteam.onclick  = openSteam
+btnOpenSteamFloatingMenu.onclick  = openSteam
 btnCloseSteam.onclick = closeSteam
 
 
 
 const desktopIcons = document.querySelectorAll('.icon')
 
-
 desktopIcons.forEach(icon => {
 
    icon.onmousedown = function(e) {
+      closeFloatingMenu()
       icon.classList.add('dragging')
       window.addEventListener('mousemove', handleDrag)
    }
 
    icon.onmouseup = function(e) {
-      e.preventDefault()
+      // e.preventDefault()
    }
 
    icon.onclick = function(e) {
@@ -64,6 +66,8 @@ window.onmouseup = e => {
 }
 
 window.onclick = e => {
+   closeFloatingMenu()
+
    if(!windowsMenu.classList.contains('open'))
       return
 
@@ -86,17 +90,55 @@ window.onkeyup = e => {
    }
 }
 
+const floatingMenu = document.querySelector('.floating-menu')
+
+window.oncontextmenu = e => {
+   e.preventDefault()
+
+   const y = e.clientY
+   const x = e.clientX
+
+   floatingMenu.style.top = `${y}px`
+   floatingMenu.style.left = `${x}px`
+   openFloatingMenu()
+   
+}
+
+const backgroundFileInput = document.querySelector('#background-input')
+const backgroundImg = document.querySelector('.background-image')
+const btnResetBackground = document.querySelector('#btn-reset-background')
+const defaultBackgroundSrc = 'assets/img/background-skull.jfif'
+
+backgroundFileInput.onchange = e => {
+   const [file] = backgroundFileInput.files
+   if(!file)
+      return
+   
+   backgroundImg.src = URL.createObjectURL(file)
+   btnResetBackground.style.display = 'block'
+}
+
+
+btnResetBackground.onclick = () => {
+   btnResetBackground.style.display = 'none'
+   backgroundImg.src = defaultBackgroundSrc
+}
+
 // ############################## FUNCTIONS
 
 
 function handleDrag(e) {
    const iconDragging = document.querySelector('.icon.dragging')
+   const childIndex = getChildIndex(iconDragging)
 
    const y = e.clientY
    const x = e.clientX
 
-   iconDragging.style.top  = `${y - 50}px`
-   iconDragging.style.left = `${x - 150}px`
+   const iconOffsetTop  = 50
+   const iconOffsetLeft = (childIndex == 0 ? 0.2 : childIndex) * 150
+
+   iconDragging.style.top  = `${y - iconOffsetTop}px`
+   iconDragging.style.left = `${x - iconOffsetLeft}px`
 }
 
 function toggleWindowsMenu () {
@@ -120,10 +162,20 @@ function closeWindowsMenu() {
 function openSteam() {
    steamWrapper.classList.add('open')
    btnOpenSteam.classList.add('focus')
+   closeWindowsMenu()
 }
 
 function closeSteam() {
    steamWrapper.classList.remove('open')
+   btnOpenSteam.classList.remove('focus')
+}
+
+function openFloatingMenu() {
+   floatingMenu.classList.add('open')
+}
+
+function closeFloatingMenu() {
+   floatingMenu.classList.remove('open')
 }
 
 function getTime() {
@@ -133,4 +185,21 @@ function getTime() {
    const currentSecond = date.getSeconds().toString().padStart(2, '0')
 
    return `${currentHour}:${currentMinute}:${currentSecond}`
+}
+
+function getChildIndex(element) {
+   const parent = element.parentElement
+   const icons = parent.querySelectorAll('.icon')
+   
+   let childIndex = 0
+
+   for(let i in icons) {
+      if(icons[i] === element) {
+         childIndex = i
+         break
+      }
+   }
+
+   return childIndex
+   
 }

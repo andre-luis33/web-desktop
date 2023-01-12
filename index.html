@@ -11,16 +11,47 @@
 </head>
 <body>
 
-   <div class="desktop-area">
-      <a data-href="github" class="icon" ondblclickfsa="window.open('https://github.com/andre-luis33')">
+   <div class="desktop-area" onselectstart="return false">
+      <input type="file" id="background-input" accept="image/*">
+
+      <img class="background-image" src="assets/img/background-skull.jfif" draggable="false" >
+
+      <a data-href="github" class="icon" ondblclick="window.open('https://github.com/andre-luis33')">
          <i class="fab fa-github"></i>
          <span>Github</span>
       </a>
 
-      <a data-href="linkedin" class="icon" ondbclick="window.open('https://www.linkedin.com/in/andre-luis-dev/')">
+      <a data-href="linkedin" class="icon" ondblclick="window.open('https://www.linkedin.com/in/andre-luis-dev/')">
          <i class="fab fa-linkedin"></i>
          <span>Linkedin</span>
       </a>
+
+      <ul class="floating-menu">
+         <li class="no-icon">
+            <label for="background-input">
+               Mudar plano de fundo
+            </label>
+         </li>
+         <li class="no-icon" id="btn-reset-background">
+            Voltar para o fundo padrão
+         </li>
+         <li id="btn-steam-floating-menu">
+            <i class="fab fa-steam"></i>
+            Abrir Steam
+         </li>
+         <li>
+            <i class="fas fa-folder"></i>
+            Nova pasta
+         </li>
+         <li>
+            <i class="fab fa-linkedin"></i>
+            Ir para Linkedin
+         </li>
+         <li>
+            <i class="fab fa-github"></i>
+            Ir para Github
+         </li>
+      </ul>
 
       <div class="steam-wrapper">
          <button class="close-steam">
@@ -49,7 +80,7 @@
                <input type="checkbox" id="remember-me">
                <label for="remember-me" class="normal-text">Lembre-me</label>
 
-               <button class="btn-login">Iniciar sessão</button>
+               <button type="button" class="btn-login">Iniciar sessão</button>
             </form>
             <aside>
                <span class="blue-text">OU COM CÓDIGO QR</span>
@@ -232,8 +263,8 @@
             <i class="fab fa-windows"></i>
          </button>
    
-         <button class="task-button">
-            <i class="fas fa-search"></i>
+         <button class="task-button" id="btn-steam-taskbar">
+            <i class="fab fa-steam"></i>
          </button>
    
          <button class="task-button">
@@ -242,10 +273,6 @@
    
          <button class="task-button">
             <i class="fas fa-code"></i>
-         </button>
-   
-         <button class="task-button" id="btn-steam-taskbar">
-            <i class="fab fa-steam"></i>
          </button>
       </div>
 
