@@ -1,0 +1,469 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+
+   font-family: Helvetica;
+}
+
+body {
+   height: 100vh;
+   width: 100vw;
+   
+   overflow: hidden;
+
+   background-image: url(../img/background-skull.jfif);
+   background-repeat: no-repeat;
+   background-size: cover;
+   
+   border: 20px solid #777;
+}
+
+button {
+   background: none;
+   border: 0;
+   cursor: pointer;
+}
+
+:root {
+   --windows-theme-color-primary: #4646e4;
+   --windows-theme-color-primary-hover: #3737b3;
+   
+   --windows-theme-color-secondary: #2727c0; 
+}
+
+.task-bar {
+   background: var(--windows-theme-color-primary);
+
+   position: absolute;
+   bottom: 20px;
+   left: 20px;
+
+   width: calc(100% - 40px);
+   height: 35px;
+
+   padding-left: 5px;
+
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.task-bar .buttons {
+   height: 100%;
+   display: block;
+}
+
+.task-bar .task-button {
+   color: #fff;
+   font-size: 23px;
+   
+   padding: 0 5px;
+   height: 100%;
+
+   margin-right: 2px;
+   transition: .2s all;
+}
+
+.task-bar .task-button:hover {
+   background: var(--windows-theme-color-primary-hover);
+}
+
+.task-bar .task-button:active {
+   scale: 0.95;
+}
+
+.task-bar .task-button.focus {
+   background: var(--windows-theme-color-primary-hover);
+   position: relative;
+}
+
+.task-bar .task-button.focus::after {
+   content: '';
+
+   height: 2px;
+   width: 100%;
+   background-color: var(--windows-theme-color-primary-hover);
+
+   position: absolute;
+   left: 0;
+   bottom: 0;
+}
+
+.task-bar .info {
+   color: #fff;
+   padding-right: 5px;
+}
+
+.task-bar .info .time {
+   padding-right: 10px;
+   border-right: 1px solid #fff;
+}
+
+.task-bar .info .date {
+   padding-left: 5px;
+}
+
+/* #################################################################################### */
+/* ############################# WINDOWS MENU  ######################################## */
+/* #################################################################################### */
+
+.windows-menu {
+   height: 85vh;
+   max-height: 600px;
+
+   width: 700px;
+
+   display: flex;
+   align-items: flex-start;
+   overflow: hidden;
+
+   background: var(--windows-theme-color-primary);
+   border-bottom: 1px solid black;
+   border-radius: 0 10px 0 0;
+
+   position: absolute;
+   bottom: 55px;  /* 20px of border + 35px of task bar */
+
+   opacity: 0;
+   visibility: hidden;
+   
+   transition: .2s all;
+}
+
+.windows-menu.open {
+   opacity: 1;
+   visibility: visible;
+}
+
+.windows-menu .actions-bar {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+
+   width: 50px;
+   height: 100%;
+}
+
+.windows-menu .actions-bar .action-button {
+   color: #fff;
+   font-size: 18px;
+   padding: 10px 0;
+}
+
+.windows-menu .actions-bar .action-button:hover {
+   background-color: var(--windows-theme-color-primary-hover);
+}
+
+.windows-menu .apps-bar {   
+   width: 40%;
+   height: 100%;
+   overflow-y: scroll;
+}
+
+.windows-menu .apps-bar::-webkit-scrollbar {
+   width: 0px;
+}
+
+/* width */
+.windows-menu .apps-bar:hover::-webkit-scrollbar {
+   width: 2px;
+}
+
+/* Handle */
+.windows-menu .apps-bar::-webkit-scrollbar-thumb {
+   background: #222;
+}
+
+/* Handle on hover */
+.windows-menu .apps-bar::-webkit-scrollbar-thumb:hover {
+   background: #555;
+}
+
+.windows-menu .apps-bar .list-title {
+   color: #fff;
+   font-size: 16px;
+   font-weight: 300;
+   
+   padding: 15px 0 15px 10px;
+}
+
+.windows-menu .apps-bar .list {
+   list-style: none;
+}
+
+.windows-menu .apps-bar .list .app-item {
+   display: flex;
+   align-items: center;
+
+   padding: 10px 0 10px 15px;
+   cursor: pointer;
+}
+
+.windows-menu .apps-bar .list .app-item:hover {
+   background-color: var(--windows-theme-color-primary-hover);
+}
+
+.windows-menu .apps-bar .list .app-item i {
+   font-size: 25px;
+   margin-right: 10px;
+}
+
+.windows-menu i.fa-folder {
+   color: yellow;
+}
+
+.windows-menu i.fa-beer {
+   color: red;
+}
+
+.windows-menu i:is(.fa-calculator, .fa-cog) {
+   color: gray;
+}
+
+.windows-menu i.fa-calendar-alt {
+   color: blue;
+}
+
+.windows-menu i.fa-camera {
+   color: rgb(38, 35, 35);
+}
+
+.windows-menu i.fa-cloud-sun {
+   color: #5da3ff;
+}
+
+.windows-menu i.fa-firefox-browser {
+   color: #D23823;
+}
+
+.windows-menu i.fa-spotify {
+   color: #1CCC5B;
+}
+
+.windows-menu i.fa-question-circle {
+   color: #0b0909;
+}
+
+.windows-menu i:is(.fa-discord, .fa-envelope, .white) {
+   color: #fff;
+}
+
+.windows-menu .apps-bar .list .app-item span {
+   font-size: 16px;
+   color: #fff;
+}
+
+.windows-menu .apps-big-bar {
+   width: 60%;
+   padding: 10px 10px 10px 10px;
+   
+   display: flex;
+   flex-wrap: wrap;
+
+   gap: 10px;
+}
+
+.windows-menu .apps-big-bar .app {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   row-gap: 10px;
+
+   border-radius: 5px;
+   padding: 10px;
+
+   background-color: var(--windows-theme-color-primary-hover);
+   cursor: pointer;
+
+   width: 115px;
+   transition: .2s transform;
+}
+
+.windows-menu .apps-big-bar .app:hover {
+   transform: translateY(-3px);
+}
+
+.windows-menu .apps-big-bar .app i {
+   font-size: 2.5rem;
+}
+
+.windows-menu .apps-big-bar .app span {
+   color: #fff;
+   font-size: 1rem;
+}
+
+.desktop-area {
+   width: calc(100vw - 40px);
+   height: calc(100vh - 55px); /* 20px of border + 35px of task bar */
+}
+
+.desktop-area {
+   display: flex;
+   align-items: start;
+   gap: 10px;
+}
+
+.desktop-area .icon {
+   color: #fff;
+
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   row-gap: 10px;
+
+   padding: 5px 20px;
+   transition: .1s background-color;
+
+   text-decoration: none;
+
+   position: relative;
+   cursor: pointer;
+}
+
+.desktop-area .icon:hover {
+   background-color: #292929;
+}
+
+.desktop-area .icon.dragging {
+   cursor: grabbing;
+}
+
+.desktop-area .icon i {
+   font-size: 2.5rem;
+}
+
+.steam-wrapper {
+   min-height: 450px;
+   width: 700px;
+   background-color: #212328;
+
+   position: absolute;
+   top: 30%;
+   left: 0;
+   right: 0;
+   margin: 0 auto;
+   
+   padding: 30px;
+
+   visibility: hidden;
+   transform: scale(0) translateY(-300px);
+   transition: .2s ease-in;
+
+   --primary-color: #eee;
+   --blue-color: #1999dc;
+}
+
+.steam-wrapper.open {
+   visibility: visible;
+   transform: scale(1);
+}
+
+.steam-wrapper .close-steam {
+   position: absolute;
+   right: 10px;
+   top: 10px;
+
+   font-size: 1rem;
+   color: var(--primary-color);
+}
+
+.steam-wrapper .main-title {
+   color: var(--primary-color);
+   font-size: 2rem;
+   letter-spacing: 2px;
+
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.steam-wrapper .main-title i {
+   font-size: 3rem;
+}
+
+.steam-wrapper .body {
+   margin-top: 20px;
+   display: flex;
+   gap: 20px;
+}
+
+.steam-wrapper .blue-text {
+   color: var(--blue-color);
+   font-weight: 600;
+   font-size: .9rem;
+   text-transform: uppercase;
+}
+
+.steam-wrapper form {
+   width: 60%;
+}
+
+.steam-wrapper aside {
+   width: 40%;
+}
+
+.steam-wrapper .form-group {
+   margin-bottom: 10px;
+}
+
+.steam-wrapper input[type=text] {
+   display: block;
+   height: 40px;
+   width: 100%;
+
+   margin-top: 5px;
+   padding: 0 10px;
+
+   background-color: #393c44;
+   color: #fff;
+   
+   border: 0;
+   outline: 0;
+
+   font-size: 1.2rem;
+}
+
+.steam-wrapper .normal-text {
+   color: var(--primary-color);
+   font-size: 0.9rem;
+}
+
+.steam-wrapper .btn-login {
+   height: 45px;
+   width: 70%;
+   
+   display: table;
+   margin: 15px auto 0 auto;
+
+   background: linear-gradient(90deg, #06bfff, #2979ff);
+   color: var(--primary-color);
+
+   font-size: 1.2rem;
+   border-radius: 3px;
+}
+
+.steam-wrapper img {
+   border-radius: 5px;
+   margin: 5px;
+
+   width: 80%;
+   display: block;
+}
+
+.steam-wrapper aside .normal-text {
+   width: 80%;
+   text-align: center;
+}
+
+.steam-wrapper a.underline {
+   text-decoration: underline;
+   color: var(--primary-color);
+}
+
+.steam-wrapper footer {
+   margin-top: 15px;
+   display: flex;
+   justify-content: space-between;
+}

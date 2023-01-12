@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" referrerpolicy="no-referrer" />   <link rel="stylesheet" href="assets/css/style.css">
+   <link rel="stylesheet" href="assets/css/style.css">
+   <title>Web Desktop</title>
+</head>
+<body>
+
+   <div class="desktop-area">
+      <a data-href="github" class="icon" ondblclickfsa="window.open('https://github.com/andre-luis33')">
+         <i class="fab fa-github"></i>
+         <span>Github</span>
+      </a>
+
+      <a data-href="linkedin" class="icon" ondbclick="window.open('https://www.linkedin.com/in/andre-luis-dev/')">
+         <i class="fab fa-linkedin"></i>
+         <span>Linkedin</span>
+      </a>
+
+      <div class="steam-wrapper">
+         <button class="close-steam">
+            <i class="fas fa-times"></i>
+         </button>
+
+         <header>
+            <h1 class="main-title">
+               <i class="fab fa-steam"></i>
+               STEAM
+            </h1>
+         </header>
+
+         <div class="body">
+            <form>
+               <div class="form-group">
+                  <label class="blue-text" for="steam-user">INICIAR SESSÃO COM O NOME DE USUÁRIO</label>
+                  <input type="text" id="steam-user">
+               </div>
+
+               <div class="form-group">
+                  <label class="normal-text" for="steam-password">SENHA</label>
+                  <input type="text" id="steam-password">
+               </div>
+
+               <input type="checkbox" id="remember-me">
+               <label for="remember-me" class="normal-text">Lembre-me</label>
+
+               <button class="btn-login">Iniciar sessão</button>
+            </form>
+            <aside>
+               <span class="blue-text">OU COM CÓDIGO QR</span>
+               <img src="assets/img/qrcode.png" loading="lazy" alt="QR Code para o Github">
+
+               <p class="normal-text">
+                  Use o <a href="https://github.com/andre-luis33" class="underline">aplicativo móvel do Steam</a>
+                  para iniciar a sessão com o código QR
+               </p>
+               
+            </aside>
+         </div>
+
+         <footer>
+            <a href="https://github.com/andre-luis33" class="underline">Não consigo iniciar a sessão</a>
+            <p class="normal-text">Não tem uma conta? <a href="https://github.com/andre-luis33" class="underline">Cadastre-se gratuitamente</a></p>
+         </footer>
+      </div>
+   </div>
+   
+   <div id="windows-menu" class="windows-menu">
+      
+      <div class="actions-bar">
+         <button class="action-button">
+            <i class="fas fa-user-circle"></i>
+         </button>
+
+         <button class="action-button">
+            <i class="far fa-file"></i>
+         </button>
+
+         <button class="action-button">
+            <i class="far fa-image"></i>
+         </button>
+
+         <button class="action-button">
+            <i class="fas fa-cog white"></i>
+         </button>
+
+         <button class="action-button">
+            <i class="fas fa-power-off"></i>
+         </button>
+      </div>
+
+      <div class="apps-bar">
+         <h2 class="list-title">A</h2>
+         <ul class="list">
+            <li class="app-item">
+               <i class="fas fa-folder"></i>
+               <span>Acessórios do Windows</span>
+            </li>
+            <li class="app-item">
+               <i class="fas fa-folder"></i>
+               <span>apps do Chrome</span>
+            </li>
+            <li class="app-item">
+               <i class="fas fa-folder"></i>
+               <span>Azure Data Studio</span>
+            </li>
+         </ul>
+
+         <h2 class="list-title">B</h2>
+         <ul class="list">
+            <li class="app-item">
+               <i class="fas fa-folder"></i>
+               <span>Battlefield 4</span>
+            </li>
+            <li class="app-item">
+               <i class="fas fa-beer"></i>
+               <span>Brahma</span>
+            </li>
+         </ul>
+
+         <h2 class="list-title">C</h2>
+         <ul class="list">
+            <li class="app-item">
+               <i class="fas fa-calculator"></i>
+               <span>Calculadora</span>
+            </li>
+            <li class="app-item">
+               <i class="fas fa-calendar-alt"></i>
+               <span>Calendário</span>
+            </li>
+            <li class="app-item">
+               <i class="fas fa-camera"></i>
+               <span>Câmera</span>
+            </li>
+            <li class="app-item">
+               <i class="fas fa-cog"></i>
+               <span>Configurações</span>
+            </li>
+         </ul>
+
+         <h2 class="list-title">D</h2>
+         <ul class="list">
+            <li class="app-item">
+               <i class="fab fa-discord"></i>
+               <span>Discord</span>
+            </li>
+         </ul>
+
+         <h2 class="list-title">E</h2>
+         <ul class="list">
+            <li class="app-item">
+               <i class="fas fa-folder"></i>
+               <span>EA</span>
+            </li>
+            <li class="app-item">
+               <i class="far fa-envelope"></i>
+               <span>E-mail</span>
+            </li>
+         </ul>
+
+         <h2 class="list-title">G</h2>
+         <ul class="list">
+            <li class="app-item">
+               <i class="fas fa-folder"></i>
+               <span>Git</span>
+            </li>
+            <li class="app-item">
+               <i class="fab fa-chrome white"></i>
+               <span>Google Chrome</span>
+            </li>
+         </ul>
+
+         <h2 class="list-title">F</h2>
+         <ul class="list">
+            <li class="app-item">
+               <i class="fab fa-firefox-browser"></i>
+               <span>Firefox</span>
+            </li>
+         </ul>
+
+
+      </div>
+
+      <div class="apps-big-bar">
+         <button class="app">
+            <i class="fab fa-chrome white"></i>
+            <span>Google Chrome</span>
+         </button>
+
+
+         <button class="app">
+            <i class="fab fa-spotify"></i>
+            <span>Spotify</span>
+         </button>
+
+         <button class="app">
+            <i class="fab fa-microsoft white"></i>
+            <span>Microsoft Store</span>
+         </button>
+
+         <button class="app">
+            <i class="fas fa-cloud-sun"></i>
+            <span>Clima</span>
+         </button>
+
+         <button class="app">
+            <i class="fas fa-newspaper white"></i>
+            <span>Notícias</span>
+         </button>
+
+         <button class="app">
+            <i class="fab fa-firefox-browser"></i>
+            <span>Firefox</span>
+         </button>
+
+         <button class="app">
+            <i class="fas fa-question-circle"></i>
+            <span>Ajuda</span>
+         </button>
+      </div>
+
+   </div>
+
+   <div class="task-bar">
+      <div class="buttons">
+         <button id="windows-btn" class="task-button">
+            <i class="fab fa-windows"></i>
+         </button>
+   
+         <button class="task-button">
+            <i class="fas fa-search"></i>
+         </button>
+   
+         <button class="task-button">
+            <i class="fab fa-chrome"></i>
+         </button>
+   
+         <button class="task-button">
+            <i class="fas fa-code"></i>
+         </button>
+   
+         <button class="task-button" id="btn-steam-taskbar">
+            <i class="fab fa-steam"></i>
+         </button>
+      </div>
+
+      <div class="info">
+         <span id="time" class="time">20:07</span>
+         <span id="date" class="date">15/07/2014</span>
+      </div>
+   </div>
+
+   <script src="assets/js/main.js"></script>
+</body>
+</html>
