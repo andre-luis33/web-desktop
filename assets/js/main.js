@@ -42,19 +42,8 @@ btnCloseSteam.onclick = closeSteam
 const desktopIcons = document.querySelectorAll('.icon')
 
 desktopIcons.forEach(icon => {
-
    icon.onmousedown = function(e) {
-      closeFloatingMenu()
-      icon.classList.add('dragging')
-      window.addEventListener('mousemove', handleDrag)
-   }
-
-   icon.onmouseup = function(e) {
-      // e.preventDefault()
-   }
-
-   icon.onclick = function(e) {
-      
+      handleMouseDown(icon)
    }
 })
 
@@ -124,19 +113,57 @@ btnResetBackground.onclick = () => {
    backgroundImg.src = defaultBackgroundSrc
 }
 
+
+const btnNewFolder = document.querySelector('#btn-new-folder')
+const desktopArea  = document.querySelector('.desktop-area')
+
+btnNewFolder.onclick = () => {
+   closeFloatingMenu()
+
+   const a = document.createElement('a')
+   a.classList.add('icon')
+   
+   const icon = document.createElement('i')
+   icon.classList.add('fas')
+   icon.classList.add('fa-folder')
+   a.appendChild(icon)
+
+   const span = document.createElement('span')
+   span.setAttribute('contenteditable', 'true')
+   span.innerHTML = 'Nova Pasta'
+   a.appendChild(span)
+
+   a.setAttribute('onmousedown', 'handleMouseDown(this)')
+
+   desktopArea.appendChild(a)
+
+   // desktopArea.innerHTML += `
+   //    <a data-href="linkedin" class="icon">
+   //       <i class="fas fa-folder"></i>
+   //       <span contenteditable="true">Nova Pasta</span>
+   //    </a>
+   // `
+   
+}
+
 // ############################## FUNCTIONS
 
+function handleMouseDown(icon) {
+   closeFloatingMenu()
+   icon.classList.add('dragging')
+   window.addEventListener('mousemove', handleDrag)
+}
 
 function handleDrag(e) {
    const iconDragging = document.querySelector('.icon.dragging')
-   const childIndex = getChildIndex(iconDragging)
 
    const y = e.clientY
    const x = e.clientX
 
    const iconOffsetTop  = 50
-   const iconOffsetLeft = (childIndex == 0 ? 0.2 : childIndex) * 150
+   const iconOffsetLeft = 0
 
+   iconDragging.style.position = 'absolute'
    iconDragging.style.top  = `${y - iconOffsetTop}px`
    iconDragging.style.left = `${x - iconOffsetLeft}px`
 }

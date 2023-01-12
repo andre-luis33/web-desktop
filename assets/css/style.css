@@ -304,7 +304,6 @@ button {
 .desktop-area {
    width: calc(100vw - 40px);
    height: calc(100vh - 55px); /* 20px of border + 35px of task bar */
-   overflow: hidden;
 }
 
 /* preventing browser not working cause display none */
@@ -318,18 +317,24 @@ button {
    height: calc(100vh - 55px);
 
    position: absolute;
+   pointer-events: none;
 }
 
-.desktop-area {
-   display: flex;
-   align-items: start;
-   gap: 10px;
+.desktop-area .background-image::selection {
+   background: transparent;
+}
+
+.desktop-area .background-image::-moz-selection {
+   background: red;
 }
 
 .desktop-area .icon {
    color: #fff;
 
-   display: flex;
+   align-self: flex-start;
+   height: fit-content;
+
+   display: inline-flex;
    flex-direction: column;
    align-items: center;
    row-gap: 10px;
@@ -377,25 +382,22 @@ button {
    visibility: visible;
 }
 
-.floating-menu li {
+.floating-menu :is(li, label) {
    padding: 7px 10px;
    cursor: pointer;
    transition: background-color .2s;
+   display: block;
 }
 
-.floating-menu li label {
-   cursor: pointer;
-}
-
-.floating-menu li.no-icon {
+.floating-menu .no-icon {
    padding-left: 35px;
 }
 
-.floating-menu li:hover {
+.floating-menu :is(li, label):hover {
    background-color: var(--floating-menu-color-hover);
 }
 
-.floating-menu li:not(:last-child) {
+.floating-menu :is(li:not(:last-child), label) {
    border-bottom: 1px solid #fff;
 }
 

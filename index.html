@@ -11,7 +11,7 @@
 </head>
 <body>
 
-   <div class="desktop-area" onselectstart="return false">
+   <div class="desktop-area">
       <input type="file" id="background-input" accept="image/*">
 
       <img class="background-image" src="assets/img/background-skull.jfif" draggable="false" >
@@ -27,11 +27,9 @@
       </a>
 
       <ul class="floating-menu">
-         <li class="no-icon">
-            <label for="background-input">
-               Mudar plano de fundo
-            </label>
-         </li>
+         <label for="background-input" class="no-icon">  <!-- gambiarrazinha pra fazer o trigger do file input hidden -->
+            Mudar plano de fundo
+         </label>
          <li class="no-icon" id="btn-reset-background">
             Voltar para o fundo padrão
          </li>
@@ -39,7 +37,7 @@
             <i class="fab fa-steam"></i>
             Abrir Steam
          </li>
-         <li>
+         <li id="btn-new-folder">
             <i class="fas fa-folder"></i>
             Nova pasta
          </li>
@@ -267,11 +265,11 @@
             <i class="fab fa-steam"></i>
          </button>
    
-         <button class="task-button">
+         <button class="task-button" onclick="alert('Cominig Soon...')">
             <i class="fab fa-chrome"></i>
          </button>
    
-         <button class="task-button">
+         <button class="task-button" onclick="alert('Cominig Soon...')">
             <i class="fas fa-code"></i>
          </button>
       </div>
